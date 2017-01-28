@@ -45,5 +45,10 @@ subtest "markup" => sub {
     is(elide($text, 0), "");
 };
 
+subtest "opt: default_prio" => sub {
+    is(elide("1\n2\n<elspan prio=1>|\n</elspan>3\n4\n", 3), "..\n3\n4\n");
+    is(elide("1\n2\n<elspan prio=1>|\n</elspan>3\n4\n", 3, {default_prio=>2}), "..\n|\n..\n");
+};
+
 DONE_TESTING:
 done_testing();
