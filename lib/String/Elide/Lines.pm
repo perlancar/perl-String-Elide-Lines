@@ -34,10 +34,10 @@ sub _elide_lines {
     } elsif ($truncate eq 'ends') {
         if ($len <= 2*$len_marker) {
             my @marker2 = (@$marker, @$marker);
-            return [@marker2[0..$len]];
+            return [@marker2[0..$len-1]];
         }
         my $offset = (@$lines-$len)/2 + $len_marker;
-        return [ @$marker, @{$lines}[$offset .. $offset + ($len-2*$len_marker)], @$marker ];
+        return [ @$marker, @{$lines}[$offset .. $offset + ($len-2*$len_marker)-1], @$marker ];
     } else { # bottom
         return [ @{$lines}[0 .. $len-$len_marker-1], @$marker ];
     }
@@ -85,7 +85,7 @@ sub elide {
         }
     }
 
-    use DD; dd \@parts; dd \@parts_attrs;
+    #use DD; dd \@parts; dd \@parts_attrs;
 
     # elide and truncate prio by prio until str is short enough
   PRIO:
