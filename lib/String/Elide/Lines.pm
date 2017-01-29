@@ -143,7 +143,7 @@ sub elide {
             my $idx = $high_indexes[$i];
             my $part_len = @{ $parts[$idx] };
             my $to_elide = $must_elide_total_len_after_this[$#high_indexes - $i] -
-                $tot_already_elided + $tot_still_to_elide;
+                $tot_already_elided;
             if ($to_elide <= 0) {
                 # leave this part alone
             } elsif ($part_len <= $to_elide) {
