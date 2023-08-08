@@ -1,12 +1,14 @@
 #!perl
 
-use 5.010;
+use 5.010001;
 use strict;
 use warnings;
-
 use Test::More 0.98;
 
 use String::Elide::Lines qw(elide);
+
+is(elide("1\n2\n",    0), "");
+is(elide("1\n2\n",    2), "1\n2\n");
 
 subtest "opt: marker" => sub {
     is(elide("1\n2\n3\n4\n", 4, {marker=>"--"}), "1\n2\n3\n4\n");
